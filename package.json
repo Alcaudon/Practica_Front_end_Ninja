@@ -1,0 +1,23 @@
+{
+  "name": "Practica_Front_end_Ninja",
+  "version": "1.0.0",
+  "description": "**Práctica Front-end Ninja**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alcaudon/Practica_Front_end_Ninja.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alcaudon/Practica_Front_end_Ninja/issues"
+  },
+  "homepage": "https://github.com/Alcaudon/Practica_Front_end_Ninja#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
