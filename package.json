@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/Alcaudon/Practica_Front_end_Ninja#readme",
   "devDependencies": {
+    "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0"
+    "gulp-notify": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "node-sass": "^4.5.3"
   }
 }
