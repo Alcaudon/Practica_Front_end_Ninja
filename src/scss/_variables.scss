@@ -1,0 +1,26 @@
+//Fonts families
+$main-font-family: 'Roboto', sans-serif;
+$title-font-family: 'Zilla Slab', serif;
+$body-font-family: 'Roboto', sans-serif;
+
+//Font sizes
+$font-size-base: 12px;
+$font-size-small: $font-size-base - 4px;
+$font-size-large: $font-size-base + 4px;
+$font-size-h1: $font-size-base + 14px;
+$font-size-h2: $font-size-base + 12px;
+$font-size-h3: $font-size-base + 10px;
+$font-size-h4: $font-size-base + 8px;
+$font-size-h5: $font-size-base + 6px;
+$font-size-h6: $font-size-base;
+
+//Base colors
+$light-blue : #BFC6D6;
+$stone-violet: #99A4C2;
+$sailor: #314987;
+$acai2: #402244;
+$violence: #12132F;
+
+//Main components colors
+$main-text-color: $violence;
+$links-color:$acai2;
