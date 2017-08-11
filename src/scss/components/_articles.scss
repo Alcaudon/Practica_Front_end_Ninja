@@ -1,0 +1,19 @@
+.articles{
+    margin-top: 55px;
+    .article{
+        background: $light-blue;
+        padding: 15px;
+        margin: 10px 5px;
+        .image-article{
+            width: 100%;
+        }
+        .title-article{
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: $font-size-large;
+        }
+        .text-article{
+            margin-top: 5px;
+        }
+    }
+}

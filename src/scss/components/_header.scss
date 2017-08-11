@@ -1,8 +1,16 @@
 .web-header {
-    background: $light-blue;
+    box-sizing: border-box;
+    background: fade-out($light-blue, 0.2);
     padding: 15px;
     color: $sailor;
     text-align: center;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    transition: background 0.2s;
+    &:hover{
+       background-color: $light-blue; 
+    }
     .web-title{
         font-weight: bold;
         text-transform: uppercase;
