@@ -1,11 +1,22 @@
 .articles{
     margin-top: 55px;
     .article{
+        box-sizing: border-box;
         background: $light-blue;
+        float: left;
         padding: 15px;
         margin: 10px 5px;
+        height: 300px;
+        max-height: 300px;
+        overflow: hidden;
+        @include if-tablet-portrait {            
+            width: calc(100% / 3 - 10px);
+            max-width: $tablet-landscape-width;
+        }
+
         .image-article{
             width: 100%;
+            max-height: 170px;
         }
         .title-article{
             font-weight: bold;
@@ -13,7 +24,7 @@
             font-size: $font-size-large;
         }
         .text-article{
-            margin-top: 5px;
+            margin-top: 15px;
         }
     }
 }
