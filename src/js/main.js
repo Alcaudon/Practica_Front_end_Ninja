@@ -1,1 +1,1 @@
-console.log("hola luis");
+const $ = require("jquery");

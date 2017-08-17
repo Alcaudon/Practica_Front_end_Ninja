@@ -6,6 +6,14 @@ var gulpImport = require("gulp-html-import");
 var tap = require("gulp-tap");
 var browserify = require("browserify");
 var buffer = require("gulp-buffer");
+var sourcemaps = require("gulp-sourcemaps");
+var htmlmin = require("gulp-htmlmin");
+var uglify = require("gulp-uglify");
+var postcss = require("gulp-postcss");
+var autoprefixer = require("autoprefixer");
+var cssnano = require("cssnano");
+
+
 
 gulp.task("default",["html","sass", "js"], function(){
     browserSync.init({server: "dist/"});
@@ -17,9 +25,15 @@ gulp.task("default",["html","sass", "js"], function(){
 
 gulp.task("sass", function(){
     gulp.src("src/scss/style.scss")
+        .pipe(sourcemaps.init()) // comienza a capturar los sourcemaps
         .pipe(sass().on("error", function(error){
            return notify().write(error);
         }))
+        .pipe(postcss([
+            autoprefixer(), // transforma el CSS dándole compatibilidad a versiones antiguas
+            cssnano()       // comprime/minifca el CSS
+        ]))
+        .pipe(sourcemaps.write("./")) // guarda el sourcemap en la misma carpeta que el CSS
         .pipe(gulp.dest("dist/"))
         .pipe(browserSync.stream());
 })
@@ -27,6 +41,7 @@ gulp.task("sass", function(){
 gulp.task("html", function(){
     gulp.src("src/*.html")
         .pipe(gulpImport("src/components/"))
+        .pipe(htmlmin({collapseWhitespace: true})) // minifica el HTML
         .pipe(gulp.dest("dist/"))
         .pipe(browserSync.stream());
 })
@@ -43,7 +58,9 @@ gulp.task("js", function(){
                             });
         }))
         .pipe(buffer()) // convertimos a buffer para que funcione el siguiente pipe
-       
+        .pipe(sourcemaps.init({loadMaps: true})) // captura los sourcemaps del archivo fuente
+        .pipe(uglify()) // minificamos el JavaScript
+        .pipe(sourcemaps.write('./')) // guarda los sourcemaps en el mismo directorio que el archivo fuente
         .pipe(gulp.dest("dist/")) // lo guardamos en la carpeta dist
-        .pipe(browserSync.stream()); // recargamos el navegador
+        .pipe(browserSync.stream()) // recargamos el navegador
 });
