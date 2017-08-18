@@ -16,7 +16,7 @@ var cssnano = require("cssnano");
 
 
 gulp.task("default",["html","sass", "js"], function(){
-    browserSync.init({server: "dist/"});
+    browserSync.init({ proxy: "http://127.0.0.1:3100/"});
 
     gulp.watch(["src/scss/*.scss","src/scss/**/*.scss"],["sass"]);    
     gulp.watch(["src/*.html", "src/**/*.html"], ["html"]);
