@@ -2,7 +2,7 @@ window.$ = window.jQuery = require("jquery");
 //Cargar los comentarios con ajax.
 
 $.ajax({
-    url: "/comments/",
+    url: "/comentarios/",
     success: comments => {
         //comprobamos si hay comentarios
         if (comments.length == 0){
