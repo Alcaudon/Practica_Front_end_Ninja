@@ -1,9 +1,9 @@
 {
-    "comments":[
-        {"id":1, "user": "Luis Barriga", "comment": "Es cojonuda esta página web que estás haciendo." },
-        {"id":2, "user": "Juani Redondo", "comment": "Pues a mi no me gusta." },
-        {"id":3, "user": "Serafín Barriga", "comment": "Creo que puede mejorar con el tiempo." },
-        {"id":4, "user": "Lorenzo Milá", "comment": "Yo desde luego es lo que espero." },
-        {"id":5, "user": "Antonio Resines", "comment": "No seais tan pesados tios." }
+    "comentarios":[
+        {"id":1, "nombre": "Luis Barriga", "mail":"luis@zerone.es","comment": "Es cojonuda esta página web que estás haciendo." },
+        {"id":2, "nombre": "Juani Redondo", "mail":"juani@zerone.es", "comment": "Pues a mi no me gusta." },
+        {"id":3, "nombre": "Serafín Barriga", "mail":"serafín@zerone.es", "comment": "Creo que puede mejorar con el tiempo." },
+        {"id":4, "nombre": "Lorenzo Milá", "mail":"lorenzo@zerone.es", "comment": "Yo desde luego es lo que espero." },
+        {"id":5, "nombre": "Antonio Resines", "mail":"antonio@zerone.es", "comment": "No seais tan pesados tios." }
     ]
 }
