@@ -24,18 +24,18 @@
         background: $light-blue;
         padding: 15px;
         margin: 10px 5px;
-        height: 140px;
-        max-height: 140px;
-        width: 80%;
+        height: 220px;
+        max-height: 220px;
+        width: calc(100%  - 10px);
         overflow: hidden;
-        position:relative;
+        @include if-mobile-landscape {            
+            height: 150px;
+            max-height: 150px;
+        }
+    
         .comment-body{
             margin: 15px 0px 5px;
         }
-        .comment-mail{
-            position:absolute;
-            bottom:5px;
-            left:10px; 
-        }
+    
     }
 }
