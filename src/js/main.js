@@ -1,7 +1,7 @@
 window.$ = window.jQuery = require("jquery");
-import { CommentsService } from "./CommentsService";
+import CommentsService from "./CommentsService";
 
-const commentService = new CommentsService();
+const commentService = new CommentsService("/comentarios/");
 
 commentService.list(comments => {
         //comprobamos si hay comentarios

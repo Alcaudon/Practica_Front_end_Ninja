@@ -1,25 +1,61 @@
 const $ = require("jquery")
 
-export class CommentsService{
+export default class CommentsService{
 
-    constructor(){
-
+    constructor(url){
+        this.url=url;
     }
 
     list(successCallback, errorCallback){
         $.ajax({
-            url: "/comentarios/",
+            url: this.url,
             success: successCallback,
             error: errorCallback
         });
     }
-    create(comment){};
 
-    getDetail(commentId){}
+    create(comment, successCallback, errorCallback){
+        $.ajax({
+            url:this.url,
+            method:'post',
+            data:comment,
+            success: successCallback,
+            error: errorCallback
+        });
+    };
 
-    update(comment){}
+    save(comment, successCallback, errorCallback){
+        if (song.id){
+            this.update(comment, successCallback, errorCallback);
+        }else{
+            this.create(comment, successCallback, errorCallback);
+        }
+    };
 
-    delete(commentId){
+    getDetail(commentId, successCallback, errorCallback){
+        $.ajax({
+            url:`${this.url}${id}`,
+            success: successCallback,
+            error: errorCallback
+        });
+    }
 
+    update(comment, successCallback, errorCallback){
+        $.ajax({
+            url:`${this.url}${comment.id}`,
+            method:'put',
+            data:comment,
+            success: successCallback,
+            error: errorCallback
+        });
+    }
+
+    delete(commentId, successCallback, errorCallback){
+        $.ajax({
+            url:`${this.url}${id}`,
+            method:'delete',
+            success: successCallback,
+            error: errorCallback
+        });
     }
 }
