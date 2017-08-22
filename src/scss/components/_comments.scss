@@ -1,12 +1,11 @@
 .comments{
     margin-top: 55px;
-    color: green;
     .ui-status { display: none; }
     &.empty {
         .ui-status.empty { display: block; }
     }
     &.loading {
-        .ui-status.loading { display: block; }
+        .ui-status.loading { display: block; }       
     }
     &.error {
         .ui-status.error { display: block; }
@@ -23,14 +22,20 @@
     .comment{
         box-sizing: border-box;
         background: $light-blue;
-        float: left;
         padding: 15px;
         margin: 10px 5px;
-        height: 110px;
-        max-height: 110px;
+        height: 140px;
+        max-height: 140px;
+        width: 80%;
         overflow: hidden;
+        position:relative;
         .comment-body{
-            margin: 5px 0px 5px;
+            margin: 15px 0px 5px;
+        }
+        .comment-mail{
+            position:absolute;
+            bottom:5px;
+            left:10px; 
         }
     }
 }

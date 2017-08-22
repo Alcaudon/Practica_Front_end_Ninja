@@ -21,7 +21,9 @@ $.ajax({
                                         ${comment.comment}
                                     </p>
                                 </div>
-                                <a href="mailto:luis@zerone.es">${comment.mail}</a>
+                                <div class="comment-mail">
+                                     <a href="mailto:luis@zerone.es">${comment.mail}</a>
+                                </div>
                         </article>`;
             }
             $(".comments").html(html);
