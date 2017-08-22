@@ -6,19 +6,31 @@ $.ajax({
     success: comments => {
         //comprobamos si hay comentarios
         if (comments.length == 0){
-            $(".detail").removeClass("loading").addClass("empty");
+            $(".comments").removeClass("loading").addClass("empty");
         }else{
             let html ="";
             for (let comment of comments){
-                html += ` ${comment.user}`;
+                html += `<article class="comment">
+                                <div class="comment-name">
+                                    <span>${comment.nombre}</span>
+                                    <span>•</span>
+                                    <span>hace 9 años</span>
+                                </div>
+                                <div class="comment-body">
+                                    <p> 
+                                        ${comment.comment}
+                                    </p>
+                                </div>
+                                <a href="mailto:luis@zerone.es">${comment.mail}</a>
+                        </article>`;
             }
-            $(".detail").html(html);
-            $(".detail").removeClass("loading").addClass("ideal");
+            $(".comments").html(html);
+            $(".comments").removeClass("loading").addClass("ideal");
         }
         
     },
     error: error => {
-        $(".detail").removeClass("loading").addClass("error");
+        $(".comments").removeClass("loading").addClass("error");
         console.log("Error al cargar los comentarios", error);
     }
 });
