@@ -1,12 +1,14 @@
 window.$ = window.jQuery = require("jquery");
 import CommentsService from "./CommentsService";
+import UiManager from "./UiManager";
 
 const commentService = new CommentsService("/comentarios/");
+const commentsListUIManager = new UiManager(".comments");
 
 commentService.list(comments => {
         //comprobamos si hay comentarios
         if (comments.length == 0){
-            $(".comments").removeClass("loading").addClass("empty");
+            commentsListUIManager.setEmpty();
         }else{
             let html ="";
             for (let comment of comments){
@@ -27,10 +29,10 @@ commentService.list(comments => {
                         </article>`;
             }
             $(".comments").html(html);
-            $(".comments").removeClass("loading").addClass("ideal");
+            commentsListUIManager.setIdeal();
         }
         
     },error => {
-        $(".comments").removeClass("loading").addClass("error");
+        commentsListUIManager.setError();
         console.log("Error al cargar los comentarios", error);
     });
