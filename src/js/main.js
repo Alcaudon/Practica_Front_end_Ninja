@@ -1,9 +1,9 @@
 window.$ = window.jQuery = require("jquery");
-//Cargar los comentarios con ajax.
+import { CommentsService } from "./CommentsService";
 
-$.ajax({
-    url: "/comentarios/",
-    success: comments => {
+const commentService = new CommentsService();
+
+commentService.list(comments => {
         //comprobamos si hay comentarios
         if (comments.length == 0){
             $(".comments").removeClass("loading").addClass("empty");
@@ -30,9 +30,7 @@ $.ajax({
             $(".comments").removeClass("loading").addClass("ideal");
         }
         
-    },
-    error: error => {
+    },error => {
         $(".comments").removeClass("loading").addClass("error");
         console.log("Error al cargar los comentarios", error);
-    }
-});
+    });
