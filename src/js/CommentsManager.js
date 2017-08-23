@@ -1,5 +1,3 @@
-const $ = require("jquery")
-
 export default class CommentsManager{
 
     constructor(commentService, commentsListUIManager){
@@ -30,22 +28,27 @@ export default class CommentsManager{
     renderComments(comments){
         let html ="";
         for (let comment of comments){
-            html += `<article class="comment">
-                            <div class="comment-name">
-                                <span>${comment.nombre}</span>
-                                <span>•</span>
-                                <span>hace 9 años</span>
-                            </div>
-                            <div class="comment-body">
-                                <p> 
-                                    ${comment.comment}
-                                </p>
-                            </div>
-                            <div class="comment-mail">
-                                 <a href="mailto:luis@zerone.es">${comment.mail}</a>
-                            </div>
-                    </article>`;
-        }
-        $(".comments").html(html);
+            html += this.renderComment(comment);
+        }        
+        this.commentsListUIManager.setIdealHtml(html);
     }
+
+    renderComment(comment){
+        return `<article class="comment">
+                        <div class="comment-name">
+                            <span>${comment.nombre}</span>
+                            <span>•</span>
+                            <span>hace 9 años</span>
+                        </div>
+                        <div class="comment-body">
+                            <p> 
+                             ${comment.comment}
+                            </p>
+                        </div>
+                        <div class="comment-mail">
+                            <a href="mailto:luis@zerone.es">${comment.mail}</a>
+                        </div>
+                 </article>`;
+    }
+    
 }
