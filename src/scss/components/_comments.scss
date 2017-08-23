@@ -1,5 +1,5 @@
 .comments{
-    margin-top: 55px;
+
     .ui-status { display: none; }
     &.empty {
         .ui-status.empty { display: block; }
@@ -28,6 +28,7 @@
         max-height: 220px;
         width: calc(100%  - 10px);
         overflow: hidden;
+        border-radius: 10px;
         @include if-mobile-landscape {            
             height: 150px;
             max-height: 150px;

@@ -1,5 +1,16 @@
 .articles{
-    margin-top: 55px; 
+    .ui-status {    
+        &.error {
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: none;
+        }
+    }
+
+    &.error .ui-status.error { display: block; }
+
     .article{
         box-sizing: border-box;
         background: $light-blue;
