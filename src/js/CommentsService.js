@@ -25,7 +25,7 @@ export default class CommentsService{
     };
 
     save(comment, successCallback, errorCallback){
-        if (song.id){
+        if (comment.id){
             this.update(comment, successCallback, errorCallback);
         }else{
             this.create(comment, successCallback, errorCallback);
