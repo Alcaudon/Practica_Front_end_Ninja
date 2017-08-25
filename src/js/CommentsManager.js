@@ -42,7 +42,7 @@ export default class CommentsManager{
                         </div>
                         <div class="comment-body">
                             <p> 
-                             ${comment.comment}
+                             ${comment.comentario}
                             </p>
                         </div>
                         <div class="comment-mail">
