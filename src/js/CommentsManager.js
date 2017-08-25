@@ -1,3 +1,5 @@
+import PubSub from "pubsub-js";
+
 export default class CommentsManager{
 
     constructor(commentService, commentsListUIManager){
@@ -7,6 +9,9 @@ export default class CommentsManager{
 
     init(){
         this.loadComments();
+        PubSub.subscribe("new-comment", (topic, song) => {
+                this.loadComments();
+        });
     }
     
     loadComments(){

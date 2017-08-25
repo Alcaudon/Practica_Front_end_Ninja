@@ -4,9 +4,10 @@ import UiManager from "./UiManager";
 
 export default class CommentsFormManager extends UiManager{
 
-    constructor(elementSelector, commentService){
+    constructor(elementSelector, commentService, pubSub){
        super(elementSelector);
         this.commentService = commentService;
+        this.pubSub = pubSub;
     }
 
     init (){
@@ -48,10 +49,10 @@ export default class CommentsFormManager extends UiManager{
         const comment = {
             nombre: this.element.find("#nombre").val(),
             mail: this.element.find("#mail").val(),
-            comentario: this.element.find("#comment").val()
+            comentario: this.element.find("#comentario").val()
         };
         this.commentService.save(comment, success => {
-            this.pubSub.publish("new-comment", comment); // publicamos el evento que informa de la creación de una canción 
+            this.pubSub.publish("new-comment", comment);
             this.resetForm();
             this.setIdeal();
         }, error => {
