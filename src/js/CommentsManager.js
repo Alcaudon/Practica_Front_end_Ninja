@@ -1,15 +1,14 @@
-import PubSub from "pubsub-js";
-
 export default class CommentsManager{
 
-    constructor(commentService, commentsListUIManager){
+    constructor(commentService, commentsListUIManager, pubSub){
         this.commentService=commentService;
         this.commentsListUIManager=commentsListUIManager;
+        this.pubSub = pubSub;
     }
 
     init(){
         this.loadComments();
-        PubSub.subscribe("new-comment", (topic, song) => {
+        this.pubSub.subscribe("new-comment", (topic, song) => {
                 this.loadComments();
         });
     }
