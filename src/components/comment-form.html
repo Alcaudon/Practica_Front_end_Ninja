@@ -7,15 +7,15 @@
         <div class="ui-status ideal">
             <div class="form-control-group">
                 <label for="nombre">Nombre y apellidos</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellidos" required>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellidos" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}" required>
             </div>
             <div class="form-control-group">
                 <label for="mail">Correo</label>
-                <input type="text" id="mail" name="mail" placeholder="Correo" required>
+                <input type="text" id="mail" name="mail" placeholder="nombre@dominio.com" pattern="[A-Za-z0-9\.\+]+@[A-Za-z0-9-]+\.[A-Za-z0-9\.]+" required>
             </div>
             <div class="comment-area">
                 <label for="comentario">Comentario</label>
-                <textarea  id="comentario" name="comentario" required rows="10" cols="40"  placeholder="Escribe aquí tus comentarios"></textarea>
+                <textarea  id="comentario" name="comentario" rows="10" cols="40"  placeholder="Escribe aquí tus comentarios" required></textarea>
             </div>
             <div class="save-button">
                 <button>Guardar comentario</button>

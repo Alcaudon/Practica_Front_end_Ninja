@@ -2,6 +2,8 @@ const $ = require("jquery");
 
 import UiManager from "./UiManager";
 
+const wordLen = 3
+
 export default class CommentsFormManager extends UiManager{
 
     constructor(elementSelector, commentService, pubSub){
@@ -30,15 +32,16 @@ export default class CommentsFormManager extends UiManager{
 
 
     isValid(){
-        const inputs = this.element.find("input");
+        const inputs = this.element.find("input, textarea") 
         for (let input of inputs) {
-            if (input.checkValidity()==false){
-                const errorMessage = input.validationMessage;
-                input.focus();
-                this.setErrorHtml(errorMessage);
-                this.setError();
+            if (input.checkValidity()==false)  {
+                this.setErrorMessage(input);
                 return false;
             }
+        }
+        if (this.contarPalabrasComentarios() == false){
+            this.setErrorMessage(this.element.find("textarea")[0]);
+            return false;
         }
         this.setIdeal();
         return true
@@ -87,5 +90,38 @@ export default class CommentsFormManager extends UiManager{
         super.setIdeal();
         this.enableFormControls();
     }
+
+    setErrorMessage(element) {
+        let errorMessage;
+        switch(element.id) {
+            case "nombre":
+                errorMessage= ("Por favor, introduce el nombre y apellidos de manera correcta");
+                break;
+            case "mail":
+                errorMessage=  ("Por favor, escribe el mail de manera correcta");
+                break;
+            case "comentario":
+                errorMessage=  (`El comentario no puede quedar en blanco ni contener mas de ${wordLen} palabras`);
+                break;
+            default:
+                errorMessage=  ("Por favor, comprueba que todo es correcto para enviar el formulario.");
+                break;
+        }
+        element.focus();
+        this.setErrorHtml(errorMessage);
+        this.setError();
+    }
+
+    contarPalabrasComentarios(){
+        const wordLen = 3;
+        let validacionTexto= true;
+        let len = this.element.find("#comentario").val().trim().split(/[\s]+/);
+        if(len.length > wordLen){            
+            validacionTexto= false;
+        }
+        return validacionTexto
+    }
+
+       
 
 }
