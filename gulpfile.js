@@ -12,10 +12,11 @@ var uglify = require("gulp-uglify");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var cssnano = require("cssnano");
+var imagemin = require("gulp-imagemin");
+var responsive = require("gulp-responsive");
 
 
-
-gulp.task("default",["html","sass", "js"], function(){
+gulp.task("default",["img","html","sass", "js"], function(){
     browserSync.init({ proxy: "http://127.0.0.1:3100/"});
 
     gulp.watch(["src/scss/*.scss","src/scss/**/*.scss"],["sass"]);    
@@ -63,4 +64,17 @@ gulp.task("js", function(){
         .pipe(sourcemaps.write('./')) // guarda los sourcemaps en el mismo directorio que el archivo fuente
         .pipe(gulp.dest("dist/")) // lo guardamos en la carpeta dist
         .pipe(browserSync.stream()) // recargamos el navegador
+});
+
+gulp.task("img", function(){
+    gulp.src("src/img/*")
+        .pipe(responsive({ // generamos las versiones responsive
+            '*': [
+                { width: 440, rename: { suffix: "-440px"}},
+                { width: 670, rename: { suffix: "-670px"}},
+                { width: 1260, rename: { suffix: "-1260px"}}
+            ]
+        }))        
+        .pipe(imagemin())
+        .pipe(gulp.dest("dist/img/"))
 });
