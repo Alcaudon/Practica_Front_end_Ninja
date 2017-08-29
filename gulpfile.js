@@ -14,9 +14,10 @@ var autoprefixer = require("autoprefixer");
 var cssnano = require("cssnano");
 var imagemin = require("gulp-imagemin");
 var responsive = require("gulp-responsive");
+const cpy = require('cpy');
 
 
-gulp.task("default",["img","html","sass", "js"], function(){
+gulp.task("default",["img","img-responsive","html","sass", "js"], function(){
     browserSync.init({ proxy: "http://127.0.0.1:3100/"});
 
     gulp.watch(["src/scss/*.scss","src/scss/**/*.scss"],["sass"]);    
@@ -66,8 +67,8 @@ gulp.task("js", function(){
         .pipe(browserSync.stream()) // recargamos el navegador
 });
 
-gulp.task("img", function(){
-    gulp.src("src/img/*")
+gulp.task("img-responsive", function(){
+    gulp.src("src/img-responsive/*")
         .pipe(responsive({ // generamos las versiones responsive
             '*': [
                 { width: 440, rename: { suffix: "-440px"}},
@@ -78,3 +79,13 @@ gulp.task("img", function(){
         .pipe(imagemin())
         .pipe(gulp.dest("dist/img/"))
 });
+
+gulp.task("img", function(){
+    cpy(['src/img/*'], 'dist/img').then(() => {
+        console.log('files copied');
+    });
+});
+
+
+
+
