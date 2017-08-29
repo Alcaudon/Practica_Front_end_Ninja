@@ -17,7 +17,7 @@ var responsive = require("gulp-responsive");
 const cpy = require('cpy');
 
 
-gulp.task("default",["img","img-responsive","html","sass", "js"], function(){
+gulp.task("default",["fonts","img","img-responsive","html","sass", "js"], function(){
     browserSync.init({ proxy: "http://127.0.0.1:3100/"});
 
     gulp.watch(["src/scss/*.scss","src/scss/**/*.scss"],["sass"]);    
@@ -48,7 +48,7 @@ gulp.task("html", function(){
         .pipe(browserSync.stream());
 })
 
-gulp.task("js", function(){
+gulp.task("js",["headroom"], function(){
     gulp.src("src/js/main.js")
         .pipe(tap(function(file){ // tap nos permite ejecutar una función por cada fichero seleccionado en gulp.src
             // reemplazamos el contenido del fichero por lo que nos devuelve browserify pasándole el fichero
@@ -82,10 +82,21 @@ gulp.task("img-responsive", function(){
 
 gulp.task("img", function(){
     cpy(['src/img/*'], 'dist/img').then(() => {
-        console.log('files copied');
+        console.log('Imagenes copiadas');
     });
 });
 
+gulp.task("fonts", function(){
+    cpy(['src/resources/fonts/*'], 'dist/fonts').then(() => {
+        console.log('fuentes copiadas');
+    });
+});
+
+gulp.task("headroom", function(){
+    cpy(['src/resources/*.js'], 'dist/js').then(() => {
+        console.log('headroom copied');
+    });
+});
 
 
 
