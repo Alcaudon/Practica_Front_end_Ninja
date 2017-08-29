@@ -39,3 +39,10 @@
         @content;
     }
 }
+
+@mixin menu-ajust {
+    @media screen and (max-width:#{$menu-ajust})
+    {
+        @content;
+    }
+}

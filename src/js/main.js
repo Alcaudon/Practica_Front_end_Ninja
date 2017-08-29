@@ -3,6 +3,7 @@ import CommentsService from "./CommentsService";
 import UiManager from "./UiManager";
 import CommentsManager from "./CommentsManager"
 import CommentsFormManager from "./CommentsFormManager"
+import menu from "./menu"
 import PubSub from "pubsub-js";
 
 const commentService = new CommentsService("/comentarios/");
