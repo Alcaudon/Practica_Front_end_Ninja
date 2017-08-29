@@ -24,14 +24,14 @@
         background: $light-blue;
         padding: 15px;
         margin: 10px 5px;
-        height: 220px;
-        max-height: 220px;
+        height: 350px;
+        max-height: 350px;
         width: calc(100%  - 10px);
         overflow: hidden;
         border-radius: 10px;
         @include if-mobile-landscape {            
-            height: 150px;
-            max-height: 150px;
+            height: 220px;
+            max-height: 2200px;
         }
     
         .comment-body{
