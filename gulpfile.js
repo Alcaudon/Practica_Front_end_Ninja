@@ -36,7 +36,7 @@ gulp.task("sass", function(){
             cssnano()       // comprime/minifca el CSS
         ]))
         .pipe(sourcemaps.write("./")) // guarda el sourcemap en la misma carpeta que el CSS
-        .pipe(gulp.dest("dist/"))
+        .pipe(gulp.dest("dist/css/"))
         .pipe(browserSync.stream());
 })
 
@@ -63,7 +63,7 @@ gulp.task("js", function(){
         .pipe(sourcemaps.init({loadMaps: true})) // captura los sourcemaps del archivo fuente
         .pipe(uglify()) // minificamos el JavaScript
         .pipe(sourcemaps.write('./')) // guarda los sourcemaps en el mismo directorio que el archivo fuente
-        .pipe(gulp.dest("dist/")) // lo guardamos en la carpeta dist
+        .pipe(gulp.dest("dist/js/")) // lo guardamos en la carpeta dist
         .pipe(browserSync.stream()) // recargamos el navegador
 });
 
