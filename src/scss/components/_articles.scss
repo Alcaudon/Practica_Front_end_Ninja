@@ -17,8 +17,8 @@
         float: left;
         padding: 15px;
         margin: 10px 5px;
-        height: 300px;
-        max-height: 300px;
+        height: 350px;
+        max-height: 350px;
         overflow: hidden;
         @include if-tablet-portrait {            
             width: calc(100% / 3 - 10px);
