@@ -17,9 +17,14 @@
         float: left;
         padding: 15px;
         margin: 10px 5px;
-        height: 350px;
-        max-height: 350px;
+        height: 410px;
+        max-height: 410px;
         overflow: hidden;
+
+        hr{
+          margin-top: 10px;  
+        }
+    
         @include if-tablet-portrait {            
             width: calc(100% / 3 - 10px);
             max-width: $tablet-landscape-width;
@@ -37,5 +42,31 @@
         .text-article{
             margin-top: 15px;
         }
+        .datos-comentarios{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 10px;
+            .datos-usuario{
+                padding: 5px;
+                max-width: 50px;
+                max-height: 50px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                .nombre-usuario{
+                    padding: 5px;
+                    display: block;
+                    text-align: center;
+                }
+            }
+            .datos-comp{
+                background-attachment: fixed;
+                display: block;
+                text-align: right;
+            }            
+        }
+       
     }
 }
