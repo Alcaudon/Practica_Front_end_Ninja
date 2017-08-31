@@ -49,12 +49,12 @@ $(function () {
 var botonesMeGusta = $('i.like')
 
 function meGusta(botonMeGusta) {
-    if ($(botonMeGusta).hasClass('fa-thumbs-up')){
-        $(botonMeGusta).addClass('fa-heart');
-        $(botonMeGusta).removeClass('fa-thumbs-up');
+    if ($(botonMeGusta).hasClass('fa-2x')){
+        $(botonMeGusta).css("color", "#000000");
+        $(botonMeGusta).removeClass('fa-2x');
     }else{
-        $(botonMeGusta).addClass('fa-thumbs-up');
-        $(botonMeGusta).removeClass('fa-heart');
+        $(botonMeGusta).addClass('fa-2x');
+        $(botonMeGusta).css("color", "#CD5C5C");
     }
 }
 for (let botonMeGusta of botonesMeGusta) {
@@ -66,17 +66,17 @@ for (let botonMeGusta of botonesMeGusta) {
 function cargarLikes(){ 
     for (let botonMeGusta of botonesMeGusta) {
         var valor = localStorage.getItem(botonMeGusta.id);
-        if (valor == 'fa-heart'){
-            $(botonMeGusta).addClass('fa-heart');
-            $(botonMeGusta).removeClass('fa-thumbs-up');
+        if (valor == 'fa-2x'){
+            $(botonMeGusta).addClass('fa-2x');
+            $(botonMeGusta).css("color", "#CD5C5C");
         }
     }
 }
 
 function guardarLikes(){ 
     for (let botonMeGusta of botonesMeGusta) {
-        if ($(botonMeGusta).hasClass('fa-heart')){
-            localStorage.setItem(botonMeGusta.id, 'fa-heart');
+        if ($(botonMeGusta).hasClass('fa-2x')){
+            localStorage.setItem(botonMeGusta.id, 'fa-2x');
         }
     }
 }
