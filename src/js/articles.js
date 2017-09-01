@@ -1,8 +1,9 @@
 const $ = require("jquery")
-window.onload = cargarLikes;
+window.onload = cargarDatos;
 
 
 var botonesMeGusta = $('i.like')
+var fechasPublicacion = $('p.fecha')
 
 function meGusta(botonMeGusta) {
     if ($(botonMeGusta).hasClass('fa-2x')){        
@@ -21,7 +22,7 @@ for (let botonMeGusta of botonesMeGusta) {
     });
 }
 
-function cargarLikes(){ 
+function cargarDatos(){ 
     for (let botonMeGusta of botonesMeGusta) {
         var valor = localStorage.getItem(botonMeGusta.id);
         if (valor == 'fa-2x'){
@@ -29,4 +30,66 @@ function cargarLikes(){
             $(botonMeGusta).css("color", "#CD5C5C");
         }
     }
+    for(let fechaPublicacion of fechasPublicacion){
+        fechaPublicacion.innerText=calcularFechaPublicacion(fechaPublicacion.innerText)
+    }
+}
+
+function diaSemana(fecha) {
+    var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado","Domingo"]        
+    return dias[fecha.getDay()];
+}
+
+Number.prototype.padLeft = function(base,chr){
+    var  len = (String(base || 10).length - String(this).length)+1;
+    return len > 0? new Array(len).join(chr || '0')+this : this;
+}
+
+function convertDate(inputFormat) {
+    dformat = [(inputFormat.getMonth()+1).padLeft(),
+                  inputFormat.getDate().padLeft(),
+                  inputFormat.getFullYear()].join('/') +' ' +
+              [inputFormat.getHours().padLeft(),
+                  inputFormat.getMinutes().padLeft(),
+                  inputFormat.getSeconds().padLeft()].join(':');
+
+    return dformat;
+}
+
+function calcularFechaPublicacion(fechaLuis){
+    var fechaActual = new Date();
+    var fechaPublicacion = new Date(fechaLuis);   
+    var tiempoTranscurrido = ((fechaActual-fechaPublicacion)/1000);      
+    if (tiempoTranscurrido<60){
+        if (tiempoTranscurrido==1){
+            return( "Hace 1 segundo");
+        }else{
+            return( "Hace " + tiempoTranscurrido + " segundos");
+        }
+    
+    }else {
+        if (tiempoTranscurrido >= 60 && tiempoTranscurrido < 3600) {
+            if (Math.floor(tiempoTranscurrido / 60)==1){
+                return( "Hace 1 minuto");
+            }else{
+                return("Hace " + Math.floor(tiempoTranscurrido / 60) + " minutos");
+            }
+        } else {
+            if (tiempoTranscurrido >= 3600 && tiempoTranscurrido < 86400) {
+                if (Math.floor(tiempoTranscurrido / 3600)==1){
+                    return( "Hace 1 hora");
+                }else{
+                    return("Hace " + Math.floor(tiempoTranscurrido / 3600) + " horas");
+                }
+    
+            } else {
+                if (tiempoTranscurrido >= 86400 && tiempoTranscurrido < 604800) {
+                    return("Publicado el " + diaSemana(fechaPublicacion ));
+                }else{
+                    return("Publicado el " +convertDate(fechaPublicacion ))
+                }
+            }
+        }
+    }
+    
 }

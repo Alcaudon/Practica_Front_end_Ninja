@@ -69,4 +69,21 @@
         }
        
     }
+    .nav-below{
+        height: 20px;
+        padding:25px;
+        clear: both;
+        width:100%;
+        max-width: 1000px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        a{     
+            font-size: $font-size-large;       
+            color: #fff; 
+            text-decoration: none;
+            align-content: center;
+        }
+    } 
 }
