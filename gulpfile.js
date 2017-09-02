@@ -17,7 +17,7 @@ var responsive = require("gulp-responsive");
 const cpy = require('cpy');
 
 
-gulp.task("default",["fonts","img","img-responsive","html","sass", "js"], function(){
+gulp.task("default",["video","fonts","img","img-responsive","html","sass", "js"], function(){
     browserSync.init({ proxy: "http://127.0.0.1:3100/"});
 
     gulp.watch(["src/scss/*.scss","src/scss/**/*.scss"],["sass"]);    
@@ -94,6 +94,12 @@ gulp.task("fonts", function(){
 
 gulp.task("headroom", function(){
     cpy(['src/resources/*.js'], 'dist/js').then(() => {
+        console.log('headroom copied');
+    });
+});
+
+gulp.task("video", function(){
+    cpy(['src/video/*'], 'dist/video').then(() => {
         console.log('headroom copied');
     });
 });
