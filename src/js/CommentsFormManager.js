@@ -2,7 +2,7 @@ const $ = require("jquery");
 
 import UiManager from "./UiManager";
 
-const wordLen = 3
+const wordLen = 120
 
 export default class CommentsFormManager extends UiManager{
 
@@ -113,7 +113,6 @@ export default class CommentsFormManager extends UiManager{
     }
 
     contarPalabrasComentarios(){
-        const wordLen = 3;
         let validacionTexto= true;
         let len = this.element.find("#comentario").val().trim().split(/[\s]+/);
         if(len.length > wordLen){            
