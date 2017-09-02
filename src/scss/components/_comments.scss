@@ -20,7 +20,10 @@
         padding: 50px;
     }
     .comment{
-        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: left;        
         background: $light-blue;
         padding: 15px;
         margin: 10px 5px;
