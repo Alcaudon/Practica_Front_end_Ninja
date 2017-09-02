@@ -46,13 +46,13 @@ Number.prototype.padLeft = function(base,chr){
 }
 
 function convertDate(inputFormat) {
-    dformat = [(inputFormat.getMonth()+1).padLeft(),
-                  inputFormat.getDate().padLeft(),
+    var dformat = [(inputFormat.getDate()).padLeft(),
+                  (inputFormat.getMonth()+1).padLeft(),
                   inputFormat.getFullYear()].join('/') +' ' +
               [inputFormat.getHours().padLeft(),
                   inputFormat.getMinutes().padLeft(),
                   inputFormat.getSeconds().padLeft()].join(':');
-
+                  inputFormat.getDate().padLeft()
     return dformat;
 }
 
@@ -64,7 +64,7 @@ function calcularFechaPublicacion(fechaLuis){
         if (tiempoTranscurrido==1){
             return( "Hace 1 segundo");
         }else{
-            return( "Hace " + tiempoTranscurrido + " segundos");
+            return( "Hace " +Math.floor(tiempoTranscurrido) + " segundos");
         }
     
     }else {
@@ -86,7 +86,7 @@ function calcularFechaPublicacion(fechaLuis){
                 if (tiempoTranscurrido >= 86400 && tiempoTranscurrido < 604800) {
                     return("Publicado el " + diaSemana(fechaPublicacion ));
                 }else{
-                    return("Publicado el " +convertDate(fechaPublicacion ))
+                    return(convertDate(fechaPublicacion ))
                 }
             }
         }
