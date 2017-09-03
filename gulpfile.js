@@ -17,7 +17,7 @@ var responsive = require("gulp-responsive");
 const cpy = require('cpy');
 
 
-gulp.task("default",["video","fonts","img","img-responsive","html","sass", "js"], function(){
+gulp.task("default",["video","fonts","img","img-responsive","img-responsive-article","html","sass", "js"], function(){
     browserSync.init({ proxy: "http://127.0.0.1:3100/"});
 
     gulp.watch(["src/scss/*.scss","src/scss/**/*.scss"],["sass"]);    
@@ -71,9 +71,22 @@ gulp.task("img-responsive", function(){
     gulp.src("src/img-responsive/*")
         .pipe(responsive({ // generamos las versiones responsive
             '*': [
-                { width: 440, rename: { suffix: "-440px"}},
-                { width: 670, rename: { suffix: "-670px"}},
-                { width: 1260, rename: { suffix: "-1260px"}}
+                { width: 600, rename: { suffix: "-600px"}},
+                { width: 690, rename: { suffix: "-690px"}},
+            ]
+        }))        
+        .pipe(imagemin())
+        .pipe(gulp.dest("dist/img/"))
+});
+
+gulp.task("img-responsive-article", function(){
+    gulp.src("src/img-responsive/article/*")
+        .pipe(responsive({ // generamos las versiones responsive
+            '*': [
+                { width: 750, rename: { suffix: "-750px"}},
+                { width: 1334, rename: { suffix: "-1334px"}},
+                { width: 1536, rename: { suffix: "-1536px"}},
+                { width: 1920, rename: { suffix: "-1920px"}},
             ]
         }))        
         .pipe(imagemin())
