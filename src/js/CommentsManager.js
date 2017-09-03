@@ -31,9 +31,13 @@ export default class CommentsManager{
 
     renderComments(comments){
         let html ="";
-        for (let comment of comments){
-            html += this.renderComment(comment);
-        }        
+        var that=this
+        $.each(comments,function(index,comment){
+            html += that.renderComment(comment);
+        });
+        //for (let comment of comments){
+           // html += this.renderComment(comment);
+        //}        
         this.commentsListUIManager.setIdealHtml(html);
     }
 

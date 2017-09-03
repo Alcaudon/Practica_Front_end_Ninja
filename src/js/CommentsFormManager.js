@@ -2,7 +2,7 @@ const $ = require("jquery");
 
 import UiManager from "./UiManager";
 
-const wordLen = 120
+const wordLen = 3
 
 export default class CommentsFormManager extends UiManager{
 
@@ -33,12 +33,20 @@ export default class CommentsFormManager extends UiManager{
 
     isValid(){
         const inputs = this.element.find("input, textarea") 
-        for (let input of inputs) {
+        var paso;
+        for (paso = 0; paso < inputs.length; paso++) {
+            if (inputs[paso].checkValidity()==false)  {
+                this.setErrorMessage(inputs[paso]);
+                return false;
+            }
+        };
+        
+        /*for (let input of inputs) {
             if (input.checkValidity()==false)  {
                 this.setErrorMessage(input);
                 return false;
             }
-        }
+        }*/
         if (this.contarPalabrasComentarios() == false){
             this.setErrorMessage(this.element.find("textarea")[0]);
             return false;

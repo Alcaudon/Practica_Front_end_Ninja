@@ -24,7 +24,7 @@ $.each(botonesMeGusta,function(index,botonMeGusta){
 });
 
 
-function cargarDatos(){ 
+function cargarDatos(){
     $.each(botonesMeGusta,function(index,botonMeGusta){
         var valor = localStorage.getItem(botonMeGusta.id);
         if (valor == 'fa-2x'){
