@@ -4,7 +4,7 @@ import CommentsManager from "./CommentsManager";
 import CommentsFormManager from "./CommentsFormManager";
 
 
-if (location.href != "http://localhost:3000/" || location.href != "http://localhost:3000/#") {
+if (location.href != "http://localhost:3000/" && location.href != "http://localhost:3000/#") {
     var isloading = 0;
     var page = 0;
 

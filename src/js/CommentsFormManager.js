@@ -2,7 +2,7 @@ const $ = require("jquery");
 
 import UiManager from "./UiManager";
 
-const wordLen = 3
+const wordLen = 120
 
 export default class CommentsFormManager extends UiManager{
 
