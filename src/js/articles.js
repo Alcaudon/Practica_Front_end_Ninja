@@ -16,23 +16,26 @@ function meGusta(botonMeGusta) {
         localStorage.setItem(botonMeGusta.id, 'fa-2x');
     }
 }
-for (let botonMeGusta of botonesMeGusta) {
+
+$.each(botonesMeGusta,function(index,botonMeGusta){
     botonMeGusta.addEventListener("click", function () {
         meGusta(botonMeGusta)
     });
-}
+});
+
 
 function cargarDatos(){ 
-    for (let botonMeGusta of botonesMeGusta) {
+    $.each(botonesMeGusta,function(index,botonMeGusta){
         var valor = localStorage.getItem(botonMeGusta.id);
         if (valor == 'fa-2x'){
             $(botonMeGusta).addClass('fa-2x');
             $(botonMeGusta).css("color", "#CD5C5C");
         }
-    }
-    for(let fechaPublicacion of fechasPublicacion){
+    });
+    
+    $.each(fechasPublicacion,function(index,fechaPublicacion){
         fechaPublicacion.innerText=calcularFechaPublicacion(fechaPublicacion.innerText)
-    }
+    }); 
 }
 
 function diaSemana(fecha) {
