@@ -4,7 +4,7 @@ import CommentsManager from "./CommentsManager";
 import CommentsFormManager from "./CommentsFormManager";
 
 
-if (location.href == "http://localhost:3000/detail.html") {
+if (location.href == "http://localhost:3000/detail.html" || location.href == "http://localhost:3000/detail.html#comments") {
     var isloading = 0;
     var page = 0;
 
@@ -24,7 +24,7 @@ if (location.href == "http://localhost:3000/detail.html") {
 
     function checkcontent() {
         if (isloading == 1) return;
-
+        
         var el = $(".commentLoader");
 
         if ($(window).scrollTop() + $(window).height() > el.offset().top)
